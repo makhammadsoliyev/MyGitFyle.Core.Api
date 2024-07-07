@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace GitFyle.Core.Api.Brokers.Storages;
 
-internal sealed class StorageBroker : EFxceptionsContext, IStorageBroker
+internal sealed partial class StorageBroker : EFxceptionsContext, IStorageBroker
 {
     private readonly IConfiguration configuration;
 
