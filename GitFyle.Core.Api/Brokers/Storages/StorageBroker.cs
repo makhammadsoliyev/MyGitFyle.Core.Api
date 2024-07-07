@@ -1,4 +1,5 @@
 ﻿using EFxceptions;
+using GitFyle.Core.Api.Models.Foundations.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -21,5 +22,10 @@ internal sealed partial class StorageBroker : EFxceptionsContext, IStorageBroker
                 name: "DefaultConnection");
 
         optionsBuilder.UseSqlServer(connectionString);
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        AddRepositoryConfigurations(modelBuilder.Entity<Repository>());
     }
 }
