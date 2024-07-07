@@ -16,7 +16,7 @@ internal sealed partial class StorageBroker : EFxceptionsContext, IStorageBroker
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string connectionString = 
+        string connectionString =
             this.configuration.GetConnectionString(
                 name: "DefaultConnection");
 
