@@ -12,6 +12,9 @@ internal sealed partial class StorageBroker
             .HasMaxLength(255)
             .IsRequired();
 
+        builder.Property(repository => repository.SourceId)
+            .IsRequired();
+
         builder.Property(repository => repository.Owner)
             .HasMaxLength(255)
             .IsRequired();
