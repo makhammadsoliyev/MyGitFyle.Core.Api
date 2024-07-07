@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitFyle.Core.Api", "GitFyle.Core.Api\GitFyle.Core.Api.csproj", "{DFF9F228-729B-43F5-BABE-3558F26FF6B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitFyle.Core.Infrastructure", "GitFyle.Core.Infrastructure\GitFyle.Core.Infrastructure.csproj", "{8E8B4C5E-5E2B-49EA-9206-CAB8770A863A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitFyle.Core.Infrastructure", "GitFyle.Core.Infrastructure\GitFyle.Core.Infrastructure.csproj", "{8E8B4C5E-5E2B-49EA-9206-CAB8770A863A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitFyle.Core.Api.Tests.Unit", "GitFyle.Core.Api.Tests.Unit\GitFyle.Core.Api.Tests.Unit.csproj", "{5EEA9107-EB38-4E22-B481-161A1A5520AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{8E8B4C5E-5E2B-49EA-9206-CAB8770A863A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E8B4C5E-5E2B-49EA-9206-CAB8770A863A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E8B4C5E-5E2B-49EA-9206-CAB8770A863A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EEA9107-EB38-4E22-B481-161A1A5520AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EEA9107-EB38-4E22-B481-161A1A5520AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EEA9107-EB38-4E22-B481-161A1A5520AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EEA9107-EB38-4E22-B481-161A1A5520AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
