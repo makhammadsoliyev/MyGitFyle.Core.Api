@@ -4,6 +4,7 @@ using GitFyle.Core.Api.Brokers.Storages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GitFyle.Core.Api.Migrations
 {
     [DbContext(typeof(StorageBroker))]
-    partial class StorageBrokerModelSnapshot : ModelSnapshot
+    [Migration("20240707131455_Addrepository")]
+    partial class Addrepository
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,9 +35,7 @@ namespace GitFyle.Core.Api.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("ExternalId")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsOrganization")
                         .HasColumnType("bit");
@@ -43,14 +44,10 @@ namespace GitFyle.Core.Api.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Owner")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("SourceId")
                         .HasColumnType("uniqueidentifier");
@@ -67,8 +64,6 @@ namespace GitFyle.Core.Api.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("SourceId");
-
-                    b.HasIndex("Name", "Owner", "ExternalId", "SourceId");
 
                     b.ToTable("Repositories");
                 });
@@ -95,7 +90,7 @@ namespace GitFyle.Core.Api.Migrations
                     b.HasOne("GitFyle.Core.Api.Models.Foundations.Sources.Source", "Source")
                         .WithMany("Repositories")
                         .HasForeignKey("SourceId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Source");
