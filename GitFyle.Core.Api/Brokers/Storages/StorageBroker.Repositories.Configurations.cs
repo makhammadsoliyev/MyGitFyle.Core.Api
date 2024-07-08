@@ -6,7 +6,7 @@ namespace GitFyle.Core.Api.Brokers.Storages;
 
 internal sealed partial class StorageBroker
 {
-    void AddRepositoryConfigurations(EntityTypeBuilder<Repository> builder)
+    void AddRepositoriesConfigurations(EntityTypeBuilder<Repository> builder)
     {
         builder.Property(repository => repository.Name)
             .HasMaxLength(255)
@@ -24,12 +24,13 @@ internal sealed partial class StorageBroker
             .IsRequired();
 
         builder.HasIndex(repository => new
-        {
-            repository.Name,
-            repository.Owner,
-            repository.ExternalId,
-            repository.SourceId
-        }).IsUnique();
+            {
+                repository.Name,
+                repository.Owner,
+                repository.ExternalId,
+                repository.SourceId
+            })
+            .IsUnique();
 
         builder.HasOne(repository => repository.Source)
             .WithMany(source => source.Repositories)

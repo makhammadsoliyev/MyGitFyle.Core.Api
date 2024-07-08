@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using GitFyle.Core.Api.Models.Foundations.Contributions;
 using GitFyle.Core.Api.Models.Foundations.Sources;
 
 namespace GitFyle.Core.Api.Models.Foundations.Repositories;
@@ -17,4 +19,5 @@ public sealed class Repository
     public DateTimeOffset CreateadAt { get; set; }
     public DateTimeOffset UpdateadAt { get;  set; }
     public Source Source { get; set; }
+    public IEnumerable<Contribution> Contributions { get; set; }
 }

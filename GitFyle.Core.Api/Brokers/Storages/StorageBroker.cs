@@ -1,4 +1,5 @@
 ﻿using EFxceptions;
+using GitFyle.Core.Api.Models.Foundations.Contributions;
 using GitFyle.Core.Api.Models.Foundations.ContributionTypes;
 using GitFyle.Core.Api.Models.Foundations.Contributors;
 using GitFyle.Core.Api.Models.Foundations.Repositories;
@@ -28,8 +29,9 @@ internal sealed partial class StorageBroker : EFxceptionsContext, IStorageBroker
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        AddRepositoryConfigurations(modelBuilder.Entity<Repository>());
+        AddRepositoriesConfigurations(modelBuilder.Entity<Repository>());
         AddContributorsConfigurations(modelBuilder.Entity<Contributor>());
+        AddContributionsConfigurations(modelBuilder.Entity<Contribution>());
         AddContributionTypesConfigurations(modelBuilder.Entity<ContributionType>());
     }
 }

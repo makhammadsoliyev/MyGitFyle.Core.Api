@@ -26,11 +26,12 @@ internal sealed partial class StorageBroker
             .HasMaxLength(255);
 
         builder.HasIndex(contributor => new
-        {
-            contributor.ExternalId,
-            contributor.SourceId,
-            contributor.Username
-        }).IsUnique();
+            {
+                contributor.ExternalId,
+                contributor.SourceId,
+                contributor.Username
+            })
+            .IsUnique();
 
         builder.HasOne(contributor => contributor.Source)
             .WithMany(source => source.Contributors)
