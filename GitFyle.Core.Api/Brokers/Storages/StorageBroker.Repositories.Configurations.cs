@@ -29,7 +29,7 @@ internal sealed partial class StorageBroker
             repository.Owner,
             repository.ExternalId,
             repository.SourceId
-        });
+        }).IsUnique();
 
         builder.HasOne(repository => repository.Source)
             .WithMany(source => source.Repositories)

@@ -30,7 +30,7 @@ internal sealed partial class StorageBroker
             contributor.ExternalId,
             contributor.SourceId,
             contributor.Username
-        });
+        }).IsUnique();
 
         builder.HasOne(contributor => contributor.Source)
             .WithMany(source => source.Contributors)
