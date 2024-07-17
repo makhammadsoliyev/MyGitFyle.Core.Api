@@ -19,4 +19,7 @@ public sealed class LoggingBroker(ILogger logger) : ILoggingBroker
 
     public void LogError(Exception exception)
         => logger.LogError(exception, message: exception.Message);
+
+    public void LogCritical(Exception exception)
+        => logger.LogCritical(exception, message: exception.Message);
 }
