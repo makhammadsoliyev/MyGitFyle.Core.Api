@@ -3,6 +3,7 @@ using GitFyle.Core.Api.Models.Foundations.Contributions;
 using GitFyle.Core.Api.Models.Foundations.ContributionTypes;
 using GitFyle.Core.Api.Models.Foundations.Contributors;
 using GitFyle.Core.Api.Models.Foundations.Repositories;
+using GitFyle.Core.Api.Models.Foundations.Sources;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -29,6 +30,7 @@ internal sealed partial class StorageBroker : EFxceptionsContext, IStorageBroker
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        AddSourcesConfigurations(modelBuilder.Entity<Source>());
         AddRepositoriesConfigurations(modelBuilder.Entity<Repository>());
         AddContributorsConfigurations(modelBuilder.Entity<Contributor>());
         AddContributionsConfigurations(modelBuilder.Entity<Contribution>());
