@@ -9,6 +9,10 @@ public sealed class LoggingBroker(ILogger logger) : ILoggingBroker
 
     public void LogTrace(string message)
         => logger.LogTrace(message);
+
     public void LogDebug(string message)
         => logger.LogDebug(message);
+
+    public void LogWarning(string message)
+        => logger.LogWarning(message);
 }
