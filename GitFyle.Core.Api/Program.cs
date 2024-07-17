@@ -1,4 +1,5 @@
 using GitFyle.Core.Api.Brokers.DateTimes;
+using GitFyle.Core.Api.Brokers.Loggings;
 using GitFyle.Core.Api.Brokers.Storages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,7 @@ public class Program
         builder.Services.AddDbContext<StorageBroker>();
         builder.Services.AddTransient<IStorageBroker, StorageBroker>();
         builder.Services.AddTransient<IDateTimeBroker, DateTimeBroker>();
+        builder.Services.AddTransient<ILoggingBroker, LoggingBroker>();
 
         var app = builder.Build();
 
