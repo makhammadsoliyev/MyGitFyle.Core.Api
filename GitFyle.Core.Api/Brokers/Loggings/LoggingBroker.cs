@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System;
+using Microsoft.Extensions.Logging;
 
 namespace GitFyle.Core.Api.Brokers.Loggings;
 
@@ -15,4 +16,7 @@ public sealed class LoggingBroker(ILogger logger) : ILoggingBroker
 
     public void LogWarning(string message)
         => logger.LogWarning(message);
+
+    public void LogError(Exception exception)
+        => logger.LogError(exception, message: exception.Message);
 }
