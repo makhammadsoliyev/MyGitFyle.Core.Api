@@ -11,4 +11,5 @@ internal partial interface IStorageBroker
     IQueryable<Source> SelectAllSources();
     ValueTask<Source> SelectSourceByIdAsync(Guid sourceId);
     ValueTask<Source> UpdateSourceAsync(Source source);
+    ValueTask<Source> DeleteSourceAsync(Source source);
 }
