@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using GitFyle.Core.Api.Models.Foundations.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -14,4 +15,7 @@ internal sealed partial class StorageBroker
 
     public IQueryable<Repository> SelectAllRepositories()
         => SelectAll<Repository>();
+
+    public async ValueTask<Repository> SelectRepositoryByIdAsync(Guid repositoryId)
+        => await SelectAsync<Repository>(repositoryId);
 }
