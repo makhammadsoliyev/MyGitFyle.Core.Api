@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using GitFyle.Core.Api.Models.Foundations.Contributors;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,4 +11,7 @@ internal sealed partial class StorageBroker
 
     public async ValueTask<Contributor> InsertContributorAsync(Contributor contributor)
         => await InsertAsync(contributor);
+
+    public IQueryable<Contributor> SelectAllContributors()
+        => SelectAll<Contributor>();
 }
