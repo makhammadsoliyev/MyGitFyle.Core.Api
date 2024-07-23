@@ -56,6 +56,15 @@ internal sealed partial class StorageBroker : EFxceptionsContext, IStorageBroker
     private async ValueTask<T> SelectAsync<T>(params object[] ids) where T : class
         => await this.FindAsync<T>(ids);
 
+    private async ValueTask<T> UpdateAsync<T>(T entity) where T : class
+    {
+        this.Entry(entity).State = EntityState.Modified;
+        await this.SaveChangesAsync();
+        DetachEntity(entity);
+
+        return entity;
+    }
+
     private void DetachEntity<T>(T entity)
         => this.Entry(entity).State = EntityState.Detached;
 }
