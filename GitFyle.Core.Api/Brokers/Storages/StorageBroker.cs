@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using EFxceptions;
 using GitFyle.Core.Api.Models.Foundations.Contributions;
 using GitFyle.Core.Api.Models.Foundations.ContributionTypes;
@@ -40,10 +41,18 @@ internal sealed partial class StorageBroker : EFxceptionsContext, IStorageBroker
 
     private async ValueTask<T> InsertAsync<T>(T entity)
     {
-        var broker = new StorageBroker(this.configuration);
-        broker.Entry(entity).State = EntityState.Added;
-        await broker.SaveChangesAsync();
+        this.Entry(entity).State = EntityState.Added;
+        await this.SaveChangesAsync();
+        DetachEntity(entity);
 
         return entity;
+    }
+
+    private IQueryable<T> SelectAll<T>() where T : class
+        => this.Set<T>();
+
+    private void DetachEntity<T>(T entity)
+    {
+        this.Entry(entity).State = EntityState.Detached;
     }
 }
