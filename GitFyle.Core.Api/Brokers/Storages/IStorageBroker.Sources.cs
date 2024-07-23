@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using GitFyle.Core.Api.Models.Foundations.Sources;
 
@@ -8,4 +9,5 @@ internal partial interface IStorageBroker
 {
     ValueTask<Source> InsertSourceAsync(Source source);
     IQueryable<Source> SelectAllSources();
+    ValueTask<Source> SelectSourceByIdAsync(Guid sourceId);
 }
