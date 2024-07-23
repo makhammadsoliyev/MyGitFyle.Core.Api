@@ -21,4 +21,7 @@ internal sealed partial class StorageBroker
 
     public async ValueTask<Contribution> UpdateContributionAsync(Contribution contribution)
         => await UpdateAsync(contribution);
+
+    public async ValueTask<Contribution> DeleteContributionAsync(Contribution contribution)
+        => await DeleteAsync(contribution);
 }
