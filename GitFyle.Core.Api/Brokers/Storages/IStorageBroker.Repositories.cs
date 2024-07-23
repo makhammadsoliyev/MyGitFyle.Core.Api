@@ -11,4 +11,5 @@ public partial interface IStorageBroker
     IQueryable<Repository> SelectAllRepositories();
     ValueTask<Repository> SelectRepositoryByIdAsync(Guid repositoryId);
     ValueTask<Repository> UpdateRepositoryAsync(Repository repository);
+    ValueTask<Repository> DeleteRepositoryAsync(Repository repository);
 }
