@@ -11,4 +11,5 @@ internal partial interface IStorageBroker
     IQueryable<Contributor> SelectAllContributors();
     ValueTask<Contributor> SelectContributorByIdAsync(Guid contributorId);
     ValueTask<Contributor> UpdateContributorAsync(Contributor contributor);
+    ValueTask<Contributor> DeleteContributorAsync(Contributor contributor);
 }
