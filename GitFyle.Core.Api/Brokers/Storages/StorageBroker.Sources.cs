@@ -18,4 +18,7 @@ internal sealed partial class StorageBroker
 
     public async ValueTask<Source> SelectSourceByIdAsync(Guid sourceId)
         => await SelectAsync<Source>(sourceId);
+
+    public async ValueTask<Source> UpdateSourceAsync(Source source)
+        => await UpdateAsync(source);
 }
