@@ -1,4 +1,5 @@
-﻿using EFxceptions;
+﻿using System.Threading.Tasks;
+using EFxceptions;
 using GitFyle.Core.Api.Models.Foundations.Contributions;
 using GitFyle.Core.Api.Models.Foundations.ContributionTypes;
 using GitFyle.Core.Api.Models.Foundations.Contributors;
@@ -35,5 +36,14 @@ internal sealed partial class StorageBroker : EFxceptionsContext, IStorageBroker
         AddContributorsConfigurations(modelBuilder.Entity<Contributor>());
         AddContributionsConfigurations(modelBuilder.Entity<Contribution>());
         AddContributionTypesConfigurations(modelBuilder.Entity<ContributionType>());
+    }
+
+    private async ValueTask<T> InsertAsync<T>(T entity)
+    {
+        var broker = new StorageBroker(this.configuration);
+        broker.Entry(entity).State = EntityState.Added;
+        await broker.SaveChangesAsync();
+
+        return entity;
     }
 }
